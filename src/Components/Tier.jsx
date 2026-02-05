@@ -44,7 +44,7 @@ const Tier = () => {
 
   const [activeId, setActiveId] = useState(null);
 
-  // ✅ Desktop + Mobile sensors
+  // Desktop + Mobile sensors
   const sensors = useSensors(
     useSensor(MouseSensor, {
       activationConstraint: { distance: 5 },
@@ -85,7 +85,7 @@ const Tier = () => {
       onDragEnd={handleDragEnd}
     >
       <div className="min-h-screen bg-[#1A1A1A] p-4 flex flex-col justify-between gap-4">
-        {/* 🔼 TIERS */}
+        {/* TIERS */}
         <div className="flex flex-col gap-3">
           {TIERS.map((tier) => (
             <TierRow
@@ -99,14 +99,14 @@ const Tier = () => {
           ))}
         </div>
 
-        {/* 🔽 IMAGE BOX */}
+        {/* IMAGE BOX */}
         <ImgBox
           images={imgData.filter(
             (img) => img.container === "imageBox"
           )}
         />
 
-        {/* ✅ DRAG OVERLAY (FIX FOR HIDDEN IMAGE) */}
+        {/* DRAG OVERLAY */}
         <DragOverlay>
           {activeImage ? (
             <ImgItem {...activeImage} isOverlay />
