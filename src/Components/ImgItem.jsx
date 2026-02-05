@@ -12,7 +12,7 @@ const ImgItem = ({ id, src }) => {
       {...attributes}
       src={src}
       draggable={false}
-      className="w-20 cursor-grab select-none"
+      className="w-14 cursor-grab select-none"
       style={{
         transform: CSS.Translate.toString(transform),
       }}

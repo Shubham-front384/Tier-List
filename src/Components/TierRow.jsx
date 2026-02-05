@@ -7,7 +7,7 @@ const TierRow = ({ tier, color, images }) => {
   });
 
   return (
-    <div className="flex min-h-[90px] border">
+    <div className="flex min-h-[80px] border">
       {/* Tier Label */}
       <div
         className={`w-14 flex items-center justify-center font-bold text-white bg-gradient-to-b ${color}`}
