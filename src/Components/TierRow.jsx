@@ -7,19 +7,19 @@ const TierRow = ({ tier, color, images }) => {
   });
 
   return (
-    <div className="flex min-h-[80px] border">
-      {/* Tier Label */}
+    <div className="flex min-h-[80px] rounded-xl overflow-hidden border border-gray-600">
+      {/* LABEL */}
       <div
         className={`w-14 flex items-center justify-center font-bold text-white bg-gradient-to-b ${color}`}
       >
         {tier}
       </div>
 
-      {/* Drop Area */}
+      {/* DROP ZONE */}
       <div
         ref={setNodeRef}
-        className={`flex flex-1 flex-wrap gap-2 p-2 ${
-          isOver ? "bg-gray-200" : "bg-gray-100"
+        className={`flex flex-1 flex-wrap gap-2 p-2 transition ${
+          isOver ? "bg-gray-700" : "bg-gray-800"
         }`}
       >
         {images.map((img) => (

@@ -9,8 +9,8 @@ const ImgBox = ({ images }) => {
   return (
     <div
       ref={setNodeRef}
-      className={`mt-4 flex flex-wrap justify-center gap-3 border-2 p-4 ${
-        isOver ? "bg-gray-200" : "bg-gray-100"
+      className={`rounded-xl flex flex-wrap justify-center gap-3 p-4 transition border border-gray-600 ${
+        isOver ? "bg-gray-700" : "bg-gray-800"
       }`}
     >
       {images.map((img) => (

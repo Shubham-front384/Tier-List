@@ -1,9 +1,14 @@
 import { useDraggable } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
 
-const ImgItem = ({ id, src }) => {
-  const { attributes, listeners, setNodeRef, transform } =
-    useDraggable({ id });
+const ImgItem = ({ id, src, isOverlay }) => {
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    isDragging,
+  } = useDraggable({ id });
 
   return (
     <img
@@ -12,9 +17,14 @@ const ImgItem = ({ id, src }) => {
       {...attributes}
       src={src}
       draggable={false}
-      className="w-14 cursor-grab select-none"
+      className={`w-12 select-none ${
+        isOverlay
+          ? "cursor-grabbing scale-110"
+          : "cursor-grab"
+      }`}
       style={{
         transform: CSS.Translate.toString(transform),
+        opacity: isDragging && !isOverlay ? 0.3 : 1,
       }}
     />
   );
