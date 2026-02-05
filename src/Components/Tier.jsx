@@ -1,14 +1,14 @@
-import { useState } from 'react';
-import TierRow from './TierRow';
-import ImgBox from './ImgBox';
-import { DndContext } from '@dnd-kit/core';
+import { useState } from "react";
+import { DndContext } from "@dnd-kit/core";
+import TierRow from "./TierRow";
+import ImgBox from "./ImgBox";
 
-const Tiers = [
-  { titleName: 'S', colorName: 'from-yellow-400 to-yellow-600' },
-  { titleName: 'A', colorName: 'from-green-400 to-green-600' },
-  { titleName: 'B', colorName: 'from-blue-400 to-blue-600' },
-  { titleName: 'C', colorName: 'from-purple-400 to-purple-600' },
-  { titleName: 'D', colorName: 'from-red-400 to-red-600' },
+const TIERS = [
+  { title: "S", color: "from-yellow-400 to-yellow-600" },
+  { title: "A", color: "from-green-400 to-green-600" },
+  { title: "B", color: "from-blue-400 to-blue-600" },
+  { title: "C", color: "from-purple-400 to-purple-600" },
+  { title: "D", color: "from-red-400 to-red-600" },
 ];
 
 const Tier = () => {
@@ -33,23 +33,40 @@ const Tier = () => {
     { id: 'img18', src: './RoyalGiantCard.png', container: "imageBox" },
   ]);
 
-  const handleDragEnd = (e) => {
-    const { active, over } = e;
+  const handleDragEnd = (event) => {
+    const { active, over } = event;
     if (!over) return;
 
     setImgData((prev) =>
       prev.map((img) =>
-        img.id === active.id ? { ...img, container: over.id } : img
+        img.id === active.id
+          ? { ...img, container: over.id }
+          : img
       )
     );
   };
 
   return (
     <DndContext onDragEnd={handleDragEnd}>
-      <div className="wrapper">
-        <TierRow tier="S" images={imgData.filter((img) => img.container === "S")} />
-        
-        <ImgBox images={imgData.filter((img) => img.container === "imageBox")} />
+      <div className="m-4 flex flex-col gap-2">
+        {/* 🔼 TIERS */}
+        {TIERS.map((tier) => (
+          <TierRow
+            key={tier.title}
+            tier={tier.title}
+            color={tier.color}
+            images={imgData.filter(
+              (img) => img.container === tier.title
+            )}
+          />
+        ))}
+
+        {/* 🔽 IMAGE BOX */}
+        <ImgBox
+          images={imgData.filter(
+            (img) => img.container === "imageBox"
+          )}
+        />
       </div>
     </DndContext>
   );

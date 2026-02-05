@@ -2,9 +2,8 @@ import { useDraggable } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
 
 const ImgItem = ({ id, src }) => {
-  const { attributes, listeners, setNodeRef, transform } = useDraggable({
-    id,
-  });
+  const { attributes, listeners, setNodeRef, transform } =
+    useDraggable({ id });
 
   return (
     <img
@@ -12,13 +11,13 @@ const ImgItem = ({ id, src }) => {
       {...listeners}
       {...attributes}
       src={src}
-      className="image"
+      draggable={false}
+      className="w-20 cursor-grab select-none"
       style={{
         transform: CSS.Translate.toString(transform),
       }}
-      draggable={false}
     />
-  )
-}
+  );
+};
 
-export default ImgItem
+export default ImgItem;
